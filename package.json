@@ -1,0 +1,16 @@
+{
+  "name": "timezone-conversions",
+  "version": "1.0.0",
+  "description": "Convert DateTime from one timezone to another",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amanlatkar/timezone-conversions.git"
+  },
+  "author": "amanlatkar.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/amanlatkar/timezone-conversions/issues"
+  },
+  "homepage": "https://github.com/amanlatkar/timezone-conversions#readme"
+}
