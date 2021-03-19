@@ -17,7 +17,7 @@ Functionality
 Get Current Date Time of any timezone
 ----
 ```javascript
-const { CurrentDateTime } = require("timezone-conversions");
+const { Convert_TZ } = require("timezone-conversions");
 let convertedDatetime = Convert_TZ("yyyy-MM-dd hh:mm:ss", from_timezone, to_timezone); //example Convert_TZ("2021-03-19 10:00:00", "+11:00", "-04:00");
 console.log(convertedDatetime);
 ```
@@ -25,7 +25,7 @@ console.log(convertedDatetime);
 Get Current Date Time of any timezone
 ----
 ```javascript
-const { Convert_TZ } = require("timezone-conversions");
+const { CurrentDateTime } = require("timezone-conversions");
 let Datetime = CurrentDateTime(timezone); //example +05:30
 console.log(Datetime);
 ```
