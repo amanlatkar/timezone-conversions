@@ -4,7 +4,7 @@
 
 Functionality
 
-1. Convert Date Time From One time to another
+1. Convert Date Time From One time timezone to another
 
 2. Get Current Date Time of any timezone 
 
@@ -26,7 +26,7 @@ Get Current Date Time of any timezone
 ----
 ```javascript
 const { CurrentDateTime } = require("timezone-conversions");
-let Datetime = CurrentDateTime(timezone); //example +05:30
+let Datetime = CurrentDateTime(timezone); //example CurrentDateTime("+05:30")
 console.log(Datetime);
 ```
 
