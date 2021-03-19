@@ -41,11 +41,11 @@ const TIMEZONES = {
 /**
  * Get Current DateTime of specific timezone
  * @param  {string} tz The timezone
- * @return {object}    The DateTime object of given timezone
+ * @return {string}    The DateTime string of given timezone
  */
 const CurrentDateTime = (tz = "+00:00") => {
 	try {
-		if (tz in TIMEZONES) tz = TIMEZONES[tz];
+		if (tz in TIMEZONES) var updated_tz = TIMEZONES[tz];
 		else throw "Invalid timezone";
 	} catch (error) {
 		return error;
@@ -53,7 +53,12 @@ const CurrentDateTime = (tz = "+00:00") => {
 
 	let [date, rawtime] = new Date().toISOString().split("T");
 	let time = rawtime.split(".")[0];
-	return new Date(date + " " + time + " " + tz);
+	return (
+		new Date(date + " " + time + " " + updated_tz)
+			.toISOString()
+			.split(".")[0]
+			.replace("T", " ") + ` ${tz}`
+	);
 };
 
 /**
@@ -61,20 +66,19 @@ const CurrentDateTime = (tz = "+00:00") => {
  * @param  {string} dt      DateTime which will be converted
  * @param  {string} from_tz The timezone
  * @param  {string} to_tz   The timezone
- * @return {object}         The converted DateTime object
+ * @return {string}         The converted DateTime string
  */
 const Convert_TZ = (dt, from_tz, to_tz) => {
 	try {
+		if (typeof dt !== "string") throw "Invalid dt format";
 		if (!(from_tz in TIMEZONES)) throw "Invalid from_tz";
-
-		if (to_tz in TIMEZONES) to_tz = TIMEZONES[to_tz];
+		if (to_tz in TIMEZONES) var updated_to_tz = TIMEZONES[to_tz];
 		else throw "Invalid to_tz";
 	} catch (error) {
 		return error;
 	}
 
 	let seprator = dt.includes("T") ? "" : " ";
-
 	try {
 		var [date, rawtime] = new Date(dt + seprator + from_tz)
 			.toISOString()
@@ -83,7 +87,13 @@ const Convert_TZ = (dt, from_tz, to_tz) => {
 		return error;
 	}
 	let time = rawtime.split(".")[0];
-	return new Date(date + " " + time + " " + to_tz);
+
+	return (
+		new Date(date + " " + time + " " + updated_to_tz)
+			.toISOString()
+			.split(".")[0]
+			.replace("T", " ") + ` ${to_tz}`
+	);
 };
 
 module.exports = {
