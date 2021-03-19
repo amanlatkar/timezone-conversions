@@ -4,9 +4,9 @@
 
 Functionality
 
-1. Convert Date Time From One time timezone to another
+1. Convert datetime from one timezone to another
 
-2. Get Current Date Time of any timezone
+2. Get Current datetime of any timezone
 
 ## Installation
 
@@ -14,28 +14,28 @@ Functionality
 
 ## Usage
 
-## Convert Date Time from one time timezone to another
-
 ```javascript
-const { Convert_TZ } = require("timezone-conversions");
-let convertedDatetime = Convert_TZ(
-  "yyyy-mm-dd hh:mm:ss",
-  from_timezone,
-  to_timezone
-);
-/* let convertedDatetime = Convert_TZ(
-  "2021-03-19 10:00:00",
-  "+11:00",
-  "-04:00"
-); */
-console.log(convertedDatetime);
+const { Convert_TZ, CurrentDateTime } = require("timezone-conversions");
+
+// Convert datetime from one time timezone to another
+Convert_TZ("YYYY-MM-DD HH:mm:ss", from_timezone, to_timezone); 
+// Convert_TZ("2021-03-19 10:15:00", "+05:30", "+07:00");  => 2021-03-19 12:45:00 +07:30
+
+// Get Current datetime of any timezone
+CurrentDateTime(timezone); 
+// CurrentDateTime("+05:30"); => 2021-03-20 02:12:00 +05:30
 ```
 
-## Get Current Date Time of any timezone
 
-```javascript
-const { CurrentDateTime } = require("timezone-conversions");
-let Datetime = CurrentDateTime(timezone);
-//let Datetime = CurrentDateTime("+05:30")
-console.log(Datetime);
-```
+## Reference
+
+Check supported timezones https://en.wikipedia.org/wiki/List_of_time_zones_by_country
+
+Supported DateTime formats for timezone conversions
+| Format  | Example |
+| ------------- | ------------- |
+| YYYY-MM-DDTHH:mm:ss  | 2021-03-19T10:15:00  |
+| YYYY-MM-DD HH:mm:ss  | 2021-03-19 10:15:00  |
+| YYYY-MM-DD HH:mm:ss A  | 2021-03-19 10:15:00 AM  |
+| YYYY-MM-DD HH:mm:ss:SSS  | 2021-03-19 10:15:00:000  |
+| YYYY-MM-DD HH:mm  | 2021-03-19 10:15  |
