@@ -17,7 +17,7 @@ const { Convert_TZ, CurrentDateTime } = require("timezone-conversions");
 
 // Convert datetime from one time timezone to another
 Convert_TZ("YYYY-MM-DD HH:mm:ss", from_timezone, to_timezone);
-// Convert_TZ("2021-03-19 10:15:00", "+05:30", "+07:00"); => 2021-03-19 12:45:00 +07:30
+// Convert_TZ("2021-03-19 10:15:00", "+05:30", "+07:00"); => 2021-03-19 11:45:00 +07:00
 
 // Get Current datetime of any timezone
 CurrentDateTime(timezone);

@@ -1,6 +1,6 @@
 {
   "name": "timezone-conversions",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "Convert datetime from one timezone to another",
   "main": "index.js",
   "keywords":[
