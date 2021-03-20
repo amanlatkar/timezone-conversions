@@ -39,13 +39,14 @@ const TIMEZONES = {
 };
 
 /**
- * Get Current DateTime of specific timezone
+ * Get current datetime of specific timezone
  * @param  {string} tz The timezone
  * @return {string}    The DateTime string of given timezone
  */
 const CurrentDateTime = (tz = "+00:00") => {
 	try {
-		if (tz in TIMEZONES) var updated_tz = TIMEZONES[tz];
+		var tz_copy = tz;
+		if (tz in TIMEZONES) tz = TIMEZONES[tz];
 		else throw "Invalid timezone";
 	} catch (error) {
 		return error;
@@ -53,26 +54,24 @@ const CurrentDateTime = (tz = "+00:00") => {
 
 	let [date, rawtime] = new Date().toISOString().split("T");
 	let time = rawtime.split(".")[0];
-	return (
-		new Date(date + " " + time + " " + updated_tz)
-			.toISOString()
-			.split(".")[0]
-			.replace("T", " ") + ` ${tz}`
-	);
+	return returnResponse(new Date(date + " " + time + " " + tz), tz_copy);
 };
 
 /**
- * Convert DateTime from one timezone to another
- * @param  {string} dt      DateTime which will be converted
+ * Convert datetime from one timezone to another
+ * @param  {string} dt      datetime which will be converted
  * @param  {string} from_tz The timezone
  * @param  {string} to_tz   The timezone
- * @return {string}         The converted DateTime string
+ * @return {string}         The converted datetime string
  */
 const Convert_TZ = (dt, from_tz, to_tz) => {
 	try {
+		if (!dt || !from_tz || !to_tz) throw "Invalid parameters";
+		var to_tz_copy = to_tz;
+
 		if (typeof dt !== "string") throw "Invalid dt format";
 		if (!(from_tz in TIMEZONES)) throw "Invalid from_tz";
-		if (to_tz in TIMEZONES) var updated_to_tz = TIMEZONES[to_tz];
+		if (to_tz in TIMEZONES) to_tz = TIMEZONES[to_tz];
 		else throw "Invalid to_tz";
 	} catch (error) {
 		return error;
@@ -88,11 +87,22 @@ const Convert_TZ = (dt, from_tz, to_tz) => {
 	}
 	let time = rawtime.split(".")[0];
 
+	return returnResponse(
+		new Date(date + " " + time + " " + to_tz),
+		to_tz_copy
+	);
+};
+
+/**
+ * Convert date object into string
+ * @param  {string} dateObj  datetime which will be converted
+ * @param  {string} timezone The timezone
+ * @return {string}          The converted datetime string
+ */
+const returnResponse = (dateObj, timezone) => {
+	if (typeof dateObj !== "object") return "Invalid date object";
 	return (
-		new Date(date + " " + time + " " + updated_to_tz)
-			.toISOString()
-			.split(".")[0]
-			.replace("T", " ") + ` ${to_tz}`
+		dateObj.toISOString().split(".")[0].replace("T", " ") + ` ${timezone}`
 	);
 };
 
