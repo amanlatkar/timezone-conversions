@@ -12,7 +12,7 @@ Functionality
 
 ## Getting started
 
-For NodeJs
+For NodeJS
 
 ```javascript
 const { Convert_TZ, CurrentDateTime } = require("timezone-conversions");
