@@ -1,6 +1,6 @@
 {
   "name": "timezone-conversions",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "Convert datetime from one timezone to another",
   "main": "index.js",
   "keywords":[
@@ -9,6 +9,10 @@
     "local-datetime",
     "UTC-to-local-datetime",
     "datetime",
+    "timezone",
+    "timezones",
+    "angular-datetime",
+    "react-datetime",
     "node-datetime"
   ],
   "repository": {
